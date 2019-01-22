@@ -8,6 +8,7 @@ import com.douzone.bookmall.dao.BookDao;
 import com.douzone.bookmall.dao.BookOrderDao;
 import com.douzone.bookmall.dao.CartDao;
 import com.douzone.bookmall.dao.CategoryDao;
+import com.douzone.bookmall.dao.Dao;
 import com.douzone.bookmall.dao.MemberDao;
 import com.douzone.bookmall.dao.OrderDao;
 import com.douzone.bookmall.vo.BookOrderVO;
@@ -22,19 +23,13 @@ public class BookMall {
 
 	public static void main(String[] args) {
 		
-
-//		categoryInsert("인문");
-//		categoryInsert("소설");
-//		categoryInsert("만화");
+		//기본 로그인 계정 : id : asdf2022 pw: 123
+		startSet();
+		menu();	
+		endSet();
 		
-		//bookinsert 4번째 파라메터 값으로 위에서 생성된 카테고리 no 값이 들어가야함
-//		bookInsert("고요할수록 밝아지는 것들",13500,"혜민",1,100);
-//		bookInsert("곰돌이 푸 ,행복한 일은 매일 있어",10800,"곰돌이 푸",2,100);
-//		bookInsert("원피스19권",4000,"오다",3,100);
-//		memberJoin2();
-		menu();
+		//스캐너 입력 오류 등으로 오류 종료시 endSet 매소드만 실행시킨뒤 다시 프로그램 실행시키면 됩니다.
 		
-
 	}
 	public static void categoryInsert(String category)
 	{
@@ -283,4 +278,19 @@ public class BookMall {
 		new MemberDao().insertMember(vo);
 	}
 
+	public static void startSet()
+	{
+		
+		new CategoryDao().insertCategory("인문",(long)1);
+		new CategoryDao().insertCategory("소설",(long)2);
+		new CategoryDao().insertCategory("만화",(long)3);
+		bookInsert("고요할수록 밝아지는 것들",13500,"혜민",1,100);
+		bookInsert("곰돌이 푸 ,행복한 일은 매일 있어",10800,"곰돌이 푸",2,100);
+		bookInsert("원피스19권",4000,"오다",3,100);
+		memberJoin2();
+	}
+	public static void endSet()
+	{
+		new Dao().allDelete();
+	}
 }

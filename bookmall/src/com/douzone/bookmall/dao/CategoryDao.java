@@ -120,5 +120,47 @@ public class CategoryDao extends Dao {
 		return result;
 	}
 	
+	public boolean insertCategory(String category,Long no)
+	{
+		Statement stmt = null;
+		PreparedStatement pstmt =null;
+		Connection con =null;
+		boolean result=false;
+		try {
+
+			 con = getConnection();
+			
+			 
+			 String sql = "insert into category values(?,?)";
+
+			 pstmt = con.prepareStatement(sql);
+			 pstmt.setLong(1,no);
+			 pstmt.setString(2,category);
+			 int count = pstmt.executeUpdate();
+			result = count ==1;
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("sql exception:"+e);
+		} 
+		finally
+		{
+		
+				try {
+					if(con!=null)
+					con.close();
+					if(stmt!=null)
+						stmt.close();
+					if(pstmt!=null)
+						pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			
+		}
+		return result;
+	}
+	
 	
 }
