@@ -21,20 +21,17 @@ import com.douzone.bookmall.vo.OrderVo;
 public class BookMall {
 
 	public static void main(String[] args) {
-		categoryInsert("인문");
-		categoryInsert("소설");
-		categoryInsert("만화");
-		bookInsert("고요할수록 밝아지는 것들",13500,"혜민",1,100);
-		bookInsert("곰돌이 푸 ,행복한 일은 매일 있어",10800,"곰돌이 푸",2,100);
-		bookInsert("원피스19권",4000,"오다",3,100);
-		MemberVo vo = new MemberVo();
-		vo.setId("asdf2022");
-		vo.setName("정영석");
-		vo.setPassword("123");
-		vo.setEmail("mana129@naver.com");
-		vo.setNumber("01046428378");
-		new MemberDao().insertMember(vo);
 		
+
+//		categoryInsert("인문");
+//		categoryInsert("소설");
+//		categoryInsert("만화");
+		
+		//bookinsert 4번째 파라메터 값으로 위에서 생성된 카테고리 no 값이 들어가야함
+//		bookInsert("고요할수록 밝아지는 것들",13500,"혜민",1,100);
+//		bookInsert("곰돌이 푸 ,행복한 일은 매일 있어",10800,"곰돌이 푸",2,100);
+//		bookInsert("원피스19권",4000,"오다",3,100);
+//		memberJoin2();
 		menu();
 		
 
@@ -255,10 +252,12 @@ public class BookMall {
 	{
 		List<OrderVo> list = new ArrayList<OrderVo>();
 		list = new OrderDao().orderPrint(memberVo);
+		System.out.println("===================주문 목록 출력=========================");
 		for(OrderVo vo : list)
 		{
 			System.out.println("주문 번호:"+vo.getNo()+", 주문 가격:"+vo.getPrice()+", 주문 상태:"+vo.getState()+", 배송지:"+vo.getAddress());
 		}
+		System.out.println("=======================================================");
 		
 	}
 
@@ -266,10 +265,22 @@ public class BookMall {
 	{
 		List <BookOrderVO> list = new ArrayList<BookOrderVO>();
 		list = new BookOrderDao().getList(memberVo);
+		System.out.println("===================주문 도서 목록 출력=========================");
 		for(BookOrderVO vo : list)
 		{
 			System.out.println("책제목:"+vo.getTitle()+", 구매권수:"+vo.getNumber()+", 가격:"+vo.getPrice());
 		}
+		System.out.println("=======================================================");
+	}
+	public static void memberJoin2()
+	{
+		MemberVo vo = new MemberVo();
+		vo.setId("asdf2022");
+		vo.setName("정영석");
+		vo.setPassword("123");
+		vo.setEmail("mana129@naver.com");
+		vo.setNumber("01046428378");
+		new MemberDao().insertMember(vo);
 	}
 
 }

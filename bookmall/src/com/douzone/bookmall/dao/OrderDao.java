@@ -141,7 +141,6 @@ public class OrderDao extends Dao {
 					pstmt.setLong(1,number);
 					pstmt.setLong(2, orderNo);
 					pstmt.setLong(3,no);
-					pstmt.executeUpdate();
 					
 					int count= pstmt.executeUpdate();
 					result = count==1;	

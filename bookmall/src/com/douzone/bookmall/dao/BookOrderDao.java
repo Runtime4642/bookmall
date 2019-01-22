@@ -27,7 +27,8 @@ public class BookOrderDao extends Dao {
 			stmt = con.createStatement();
 			//4 sql 문 실행
 			String sql = "select o1.no, b.title,"
-					+ " o1.number,b.price*o1.number from (order_book o1 join orderlist o2 on o1.order_no = o2.no) join book b on o1.book_no = b.no where o2.member_no="+memberNo;
+					+ " o1.number,b.price*o1.number from (order_book o1 join orderlist o2 on o1.order_no = o2.no) join book b on o1.book_no ="
+					+ " b.no where o2.member_no="+memberNo;
 			rs = stmt.executeQuery(sql);
 			
 			//5 결과 가져오기
@@ -37,9 +38,7 @@ public class BookOrderDao extends Dao {
 				String title = rs.getString(2);
 				Long number = rs.getLong(3);
 				Long price = rs.getLong(4);
-				
-				
-				
+
 				BookOrderVO vo = new BookOrderVO();
 				vo.setNo(no);
 				vo.setTitle(title);
