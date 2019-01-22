@@ -29,6 +29,8 @@ public class BookMall {
 		endSet();
 		
 		//스캐너 입력 오류 등으로 오류 종료시 endSet 매소드만 실행시킨뒤 다시 프로그램 실행시키면 됩니다.
+		//startset() 은 초기 입력값 책,회원,카테고리 등의 입력을 합니다.
+		//endset() 은 데이터베이스 안의 모든 데이터를 삭제 합니다.
 		
 	}
 	public static void categoryInsert(String category)
